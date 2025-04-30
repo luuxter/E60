@@ -6,8 +6,16 @@
 </head>
 <body>
   <audio autoplay controls>
-    <source src="iedereen_is_van_de_wereld_BBT.mp3" type="audio/mpeg">
+    <source src="/iedereen_is_van_de_wereld_BBT.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
+    <script>
+    // Attempt to autoplay after user gesture fallback
+    const player = document.getElementById('player');
+    player.play().catch(() => {
+      // If autoplay fails, wait for a click to start
+      document.body.addEventListener('click', () => player.play(), { once: true });
+    });
+  </script>
 </body>
 </html>
